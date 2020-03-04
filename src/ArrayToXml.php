@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\ArrayToXml;
+namespace Aivec\ArrayToXml;
 
 use DOMDocument;
 use DOMElement;
@@ -42,7 +42,7 @@ class ArrayToXml
         $this->convertElement($root, $array);
     }
 
-    public function setNumericTagNamePrefix(string $prefix)
+    public function setNumericTagNamePrefix($prefix)
     {
         $this->numericTagNamePrefix = $prefix;
     }
@@ -50,9 +50,9 @@ class ArrayToXml
     public static function convert(
         array $array,
         $rootElement = '',
-        bool $replaceSpacesByUnderScoresInKeyNames = true,
-        string $xmlEncoding = null,
-        string $xmlVersion = '1.0',
+        $replaceSpacesByUnderScoresInKeyNames = true,
+        $xmlEncoding = null,
+        $xmlVersion = '1.0',
         array $domProperties = []
     ) {
         $converter = new static(
@@ -67,12 +67,12 @@ class ArrayToXml
         return $converter->toXml();
     }
 
-    public function toXml(): string
+    public function toXml()
     {
         return $this->document->saveXML();
     }
 
-    public function toDom(): DOMDocument
+    public function toDom()
     {
         return $this->document;
     }
@@ -204,7 +204,7 @@ class ArrayToXml
         }
     }
 
-    protected function createRootElement($rootElement): DOMElement
+    protected function createRootElement($rootElement)
     {
         if (is_string($rootElement)) {
             $rootElementName = $rootElement ?: 'root';
@@ -212,7 +212,7 @@ class ArrayToXml
             return $this->document->createElement($rootElementName);
         }
 
-        $rootElementName = $rootElement['rootElementName'] ?? 'root';
+        $rootElementName = isset($rootElement['rootElementName']) ? $rootElement['rootElementName'] : 'root';
 
         $element = $this->document->createElement($rootElementName);
 
@@ -227,7 +227,7 @@ class ArrayToXml
         return $element;
     }
 
-    protected function removeControlCharacters(string $value): string
+    protected function removeControlCharacters($value)
     {
         return preg_replace('/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/', '', $value);
     }

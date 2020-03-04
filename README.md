@@ -9,18 +9,21 @@
 
 This package provides a very simple class to convert an array to an xml string.
 
+## PHP 5.6 Compatible
+This is a fork of https://github.com/spatie/array-to-xml simply for compatibility with older versions of PHP.
+
 ## Install
 
 You can install this package via composer.
 
 ``` bash
-composer require spatie/array-to-xml
+composer require aivec/array-to-xml
 ```
 
 ## Usage
 
 ```php
-use Spatie\ArrayToXml\ArrayToXml;
+use aivec\ArrayToXml\ArrayToXml;
 ...
 $array = [
     'Good guy' => [
@@ -158,7 +161,7 @@ The root element name can then be set using the `rootElementName` key.
 $result = ArrayToXml::convert($array, [
     'rootElementName' => 'helloyouluckypeople',
     '_attributes' => [
-        'xmlns' => 'https://github.com/spatie/array-to-xml',
+        'xmlns' => 'https://github.com/aivec/array-to-xml',
     ],
 ], true, 'UTF-8');
 ```
@@ -187,7 +190,7 @@ This will result in:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<helloyouluckypeople xmlns="https://github.com/spatie/array-to-xml">
+<helloyouluckypeople xmlns="https://github.com/aivec/array-to-xml">
     <Good_guys>
         <Guy>
             <name>Luke Skywalker</name>

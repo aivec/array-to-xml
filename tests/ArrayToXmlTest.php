@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Spatie\ArrayToXml\ArrayToXml;
+use Aivec\ArrayToXml\ArrayToXml;
 use Spatie\Snapshots\MatchesSnapshots;
 
 class ArrayToXmlTest extends TestCase
